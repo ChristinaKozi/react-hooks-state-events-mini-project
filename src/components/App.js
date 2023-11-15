@@ -18,31 +18,27 @@ function App() {
     setRootTasks(updatedTasks)
   }
 
-  function onFilter(categories) {
-    if(!filters.includes(categories)){
-      setFilters([...filters, categories])
-    } else if(filters.includes(categories)){
-      setFilters(filters.filter((filter)=> filter !== categories))
-    } 
-    
+  function onFilter(category) {
+    if (!category) {
+      setFilters([]);
+    } else if (!filters.includes(category)) {
+      setFilters([...filters, category]);
+    } else if (filters.includes(category)) {
+      setFilters(filters.filter((filter) => filter !== category));
+    }
   }
   
   useEffect(()=>{
     if (filters.length === 0 || filters.includes("All")){
       setTasks(rootTasks)
     } else {
-      const updatedTasks = rootTasks.filter((task) => {
-        if(filters.includes(task.category)){
-          return true
-        }
-      })
+      const updatedTasks = rootTasks.filter((task) => filters.includes(task.category));
       setTasks(updatedTasks)
     }
-    
   },[filters, rootTasks])
 
   function onTaskFormSubmit(newTask){
-    setRootTasks([...rootTasks,newTask])
+    setRootTasks((prevRootTasks) => [...prevRootTasks, newTask]);
   }
   
   return (
