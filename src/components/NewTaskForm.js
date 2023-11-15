@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CategoryFilter from "./CategoryFilter";
 
-function NewTaskForm({ categories,onSubmit }) {
+function NewTaskForm({ categories,onTaskFormSubmit }) {
   const [details, setDetails] = useState('')
   const [category, setCategories ] = useState('')
 
@@ -13,7 +13,7 @@ function NewTaskForm({ categories,onSubmit }) {
       text: details,
       category: category
     }
-    onSubmit(newTask)
+    onTaskFormSubmit(newTask)
   }
   return (
     <form className="new-task-form" onSubmit={handleSubmit}>

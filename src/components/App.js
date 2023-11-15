@@ -41,7 +41,7 @@ function App() {
     
   },[filters, rootTasks])
 
-  function onSubmit(newTask){
+  function onTaskFormSubmit(newTask){
     setRootTasks([...rootTasks,newTask])
   }
   
@@ -49,7 +49,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={categories} onFilter={onFilter} />
-      <NewTaskForm categories={categories} onSubmit={onSubmit}/>
+      <NewTaskForm categories={categories} onTaskFormSubmit={onTaskFormSubmit}/>
       <TaskList tasks={tasks} onHandleDelete={onHandleDelete}/>
     </div>
   );
