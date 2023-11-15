@@ -3,8 +3,6 @@ import Task from './Task'
 
 function TaskList({ tasks,onHandleDelete }) {
 
-  console.log(tasks)
-
   const taskItem = tasks.map(task=>{
     return <Task key={task.text} text={task.text} category={task.category} onHandleDelete={onHandleDelete} />
   })
