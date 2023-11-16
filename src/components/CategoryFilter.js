@@ -1,15 +1,23 @@
-import React, { useState } from "react";
-import Button from "./Button";
+import React from "react";
 
-function CategoryFilter({ categories,onFilter }) {
+function CategoryFilter({ categories, selectedCategory, onSelectCategory }) {
+  const categoryButtons = categories.map((category) => {
+    const className = category === selectedCategory ? "selected" : null;
+    return (
+      <button
+        key={category}
+        className={className}
+        onClick={() => onSelectCategory(category)}
+      >
+        {category}
+      </button>
+    );
+  });
 
-  const categoryButton = categories.map(category =>{
-    return <Button key={category} category={category} onFilter={onFilter} />
-  })
   return (
     <div className="categories">
       <h5>Category filters</h5>
-      {categoryButton}
+      {categoryButtons}
     </div>
   );
 }
